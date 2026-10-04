@@ -83,3 +83,35 @@ string TaiKhoan::getSoTK() {
     return soTK;
 }
 
+long long TaiKhoan::getSoDu() {
+    return soDu;
+}
+
+// Nap tien vao tai khoan
+void TaiKhoan::napTien(long long tien) {
+    if (tien > 0) {
+        soDu += tien;
+        cout << "=> Nap tien thanh cong! So du hien tai: " << soDu << endl;
+    } else {
+        cout << "=> Loi: So tien nap phai lon hon 0!" << endl;
+    }
+}
+
+// Rut tien khoi tai khoan
+void TaiKhoan::rutTien(long long tien) {
+    if (tien <= 0) {
+        cout << "=> Loi: So tien rut phai lon hon 0!" << endl;
+    } else if (tien > soDu) {
+        cout << "=> Loi: So du khong du de thuc hien giao dich!" << endl;
+    } else {
+        soDu -= tien;
+        cout << "=> Rut tien thanh cong! So du hien tai: " << soDu << endl;
+    }
+}
+
+// Tinh lai (Gia su tinh lai cho 1 ky han)
+double TaiKhoan::tinhLai() {
+    // Lai suat duoc tinh theo phan tram, nen can chia cho 100
+    double tienLai = soDu * (laiSuat / 100.0);
+    return tienLai;
+}
